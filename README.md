@@ -49,7 +49,8 @@ Read article if needed: https://www.rosehosting.com/blog/install-elasticsearch-o
 #### Clone project:
 ```
 $ mkdir testproject && cd $_
-$ git clone [current project]
+$ git clone https://github.com/beatum/djangorest_and_elasticserch.git
+$ cd djangorest_and_elasticserch
 ```
 
 #### Initialize ```virtualenv``` if needed:
