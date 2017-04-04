@@ -1,0 +1,75 @@
+{% spaceless %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Test Case</title>
+    {% block stylesheet %}
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static "css/app.css" %}">
+    {% endblock %}
+  </head>
+  <body>
+
+    <div class="container pt-4" id="head-container">
+      <!-- Head here -->
+      {% block head %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <h1>Hellow TRINITY's TEAM!</h1>
+            <p class="pt-4">Developed specifically for TRINITY Digital Agency.</p>
+            <p class="pt-4"><span class="text-uppercase">In this test case presents</span>: Django Rest Framework and Haysteck with Elasticsearch beckend as search engine - will be play together! As you can see Bootstrap framework v4.0.0.0-alpha also included.</p>
+            <p>Designed and built with all the love in the digital world by <a href="mailto:direct@beatum-group.ru">@beatum</a> - Ivan Semernyakov.</p>
+            <ul>
+              <li>Don't foget create many article with command: <code>./manage.py create_article 1000</code></li>
+              <li>API list: <a href="http://localhost:8000/api/v1/article/">/api/v1/article/</a> - Here you can test the sampling method on the upper boundary of the field DateTimeTZRange (active_range)</li>
+              <li>API search: <a href="http://localhost:8000/api/v1/search/">/api/v1/search/</a> - Full-text search
+              <p class="pt-2">How to search? For example:</p>
+                <ul class="pb-3">
+                  <li><a href="http://localhost:8000/api/v1/search/?title__contains=lorem">/api/v1/search/?title__contains=lorem</a> - use regular django query (startswith, exact, iexact, contains, lt, gt, lte, gte, etc...) </li>
+                  <li><a href="http://localhost:8000/api/v1/search/?title__contains=lorem&text__contains=ipsum">/api/v1/search/?title__contains=lorem&text__contains=ipsum</a> - сhain of parameters</li>
+                  <li><a href="http://localhost:8000/api/v1/search/?title__contains=lorem&text__contains=ipsum">/api/v1/search/?title__contains=lorem&boost=ipsum,1.1</a> - boosting by feild relevance (by default 'title' is more relevance then 'text')</li>
+                  <li><a href="http://localhost:8000/?format=json&limit=100&offset=100&text__contains=ipsum&title__contains=lorem">/api/v1/search/?format=json&limit=100&offset=100&text__contains=ipsum&title__contains=lorem</a> - finally you can use all together with limiting and offsetting, with output in json format</li>
+                </ul>
+              </li>
+              <li>TODO: autocomplete!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+
+    <div class="container" id="main-container">
+      <!-- Content here -->
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <div class="container" id="footer-container">
+      <!-- Footer here -->
+      {% block footer %}
+        <div class="row ">
+          <div class="col-md-12">
+            <hr>
+            <p class="pl-4 pb-4"><small>3 April 2017. Russia, Krasnodar. Code licensed <a class="copy" target="_blank" href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0.</a></small></p>
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+
+    {% block javascript %}
+      <!-- jQuery first, then Tether, then Bootstrap JS. -->
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    {% endblock %}
+  </body>
+</html>
+{% endspaceless %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static highlight %}
+
+{% block content %}
+    <h2>Regular Search View (Without API!)</h2>
+
+    <form method="get" action=".">
+        <div class="form-group">
+          <label for="id_q">Example label</label>
+          <input id="id_q" name="q" type="search" class="form-control" placeholder="For example input lorem">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    {% if query %}
+        <h4>Results: {{ page.start_index }} - {{ page.end_index }} of {{ page.paginator.count }}</h4>
+        {% for result in page.object_list %}
+            <div class="pb-3">
+              <p class="title">
+                   <a href="{{ result.object.get_absolute_url }}">id#{{ result.object.id }} {% highlight result.object.title with query max_length 200 %}</a>
+              </p>
+              <p class="text">
+                   {% highlight result.object.text with query max_length 400 %}
+              </p>
+            </div>
+        {% empty %}
+            <p>No results found.</p>
+        {% endfor %}
+
+        {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %} |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+        {% endif %}
+    {% else %}
+        <p>Show some example queries to run, maybe query syntax, something else?</p>
+    {% endif %}
+{% endblock %}

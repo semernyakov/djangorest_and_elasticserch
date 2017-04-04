@@ -1,0 +1,15 @@
+### Python template
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Django stuff:
+static
+media
+local_settings.py
+*.log
+
+# IDE
+.idea
+
